@@ -5,6 +5,8 @@
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)
 (setq initial-scratch-message nil)
+(setq visible-bell t)
+(setq ring-bell-function 'ignore)
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
@@ -69,8 +71,8 @@
 
 (use-package git-gutter
   :straight t
-  :defer t
-  :hook (prog-mode . git-gutter-mode))
+  :config
+  (global-git-gutter-mode +1))
 
 (use-package treemacs
   :straight t
@@ -167,13 +169,13 @@
   :hook ((tuareg-mode . merlin-mode)
          (tuareg-mode . utop-minor-mode)))
 
+(use-package company-coq
+  :straight t
+  :defer t)
+
 (use-package proof-general
   :straight t
   :defer t
   :mode (("\\.v\\'" . coq-mode))
   :hook (coq-mode . comany-coq-mode))
-
-(use-package company-coq
-  :straight t
-  :defer t)
 
