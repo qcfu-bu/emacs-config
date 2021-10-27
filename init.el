@@ -5,10 +5,6 @@
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
-(recentf-mode 1)
-(setq recentf-max-menu-items 25
-      recentf-max-saved-items 25)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; Straight
 (setq straight-check-for-modifications '(check-on-save)
@@ -40,6 +36,29 @@
   :config
   (dashboard-setup-startup-hook))
 
+(use-package ivy-prescient
+  :straight t
+  :defer t)
+
+(use-package counsel
+  :straight t
+  :config
+  (counsel-mode)
+  (ivy-prescient-mode)
+  (prescient-persist-mode))
+
+(use-package company-prescient
+  :straight t
+  :defer t)
+
+(use-package company
+  :straight t
+  :defer t
+  :hook (prog-mode . company-mode)
+  :init
+  (company-prescient-mode)
+  (prescient-persist-mode))
+
 (use-package which-key
   :straight t
   :config
@@ -49,11 +68,6 @@
   :straight t
   :config
   (global-undo-tree-mode))
-
-(use-package company
-  :straight t
-  :defer t
-  :hook (prog-mode . company-mode))
 
 (use-package flycheck
   :straight t
