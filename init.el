@@ -45,7 +45,9 @@
   :config
   (counsel-mode)
   (ivy-prescient-mode)
-  (prescient-persist-mode))
+  (prescient-persist-mode)
+  (global-set-key "\C-s" 'swiper)
+  (global-set-key (kbd "C-x C-r") 'counsel-recentf))
 
 (use-package company-prescient
   :straight t
