@@ -5,6 +5,10 @@
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
+(save-place-mode 1)
+(global-auto-revert-mode t)
+(when (memq window-system '(mac ns x))
+  (mac-auto-operator-composition-mode t))
 
 ;; Straight
 (setq straight-check-for-modifications '(check-on-save)
