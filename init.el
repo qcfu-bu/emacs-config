@@ -181,4 +181,3 @@
   :after company-coq
   :mode (("\\.v\\'" . coq-mode))
   :hook (coq-mode . comany-coq-mode))
-
