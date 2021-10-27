@@ -58,7 +58,9 @@
 (use-package flycheck
   :straight t
   :defer t
-  :hook (prog-mode . flycheck-mode))
+  :hook (prog-mode . flycheck-mode)
+  :config
+  (setq-default flycheck-disabled-checkers '(coq)))
 
 (use-package flyspell
   :straight t
@@ -172,10 +174,11 @@
 (use-package company-coq
   :straight t
   :defer t)
-
+ 
 (use-package proof-general
   :straight t
   :defer t
+  :after company-coq
   :mode (("\\.v\\'" . coq-mode))
   :hook (coq-mode . comany-coq-mode))
 
