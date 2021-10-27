@@ -60,7 +60,8 @@
 (use-package company
   :straight t
   :defer t
-  :hook (prog-mode . company-mode)
+  :hook ((prog-mode . company-mode)
+	 (text-mode . company-mode))
   :init
   (company-prescient-mode)
   (prescient-persist-mode))
@@ -104,14 +105,17 @@
   :straight t
   :defer t
   :hook ((prog-mode . smartparens-mode)
-	 (prog-mode . show-smartparens-mode))
+	 (text-mode . smartparens-mode)
+	 (prog-mode . show-smartparens-mode)
+	 (text-mode . show-smartparens-mode))
   :config
   (require 'smartparens-config))
 
 (use-package rainbow-delimiters
   :straight t
   :defer t
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook ((prog-mode . rainbow-delimiters-mode)
+	 (text-mode . rainbow-delimiters-mode)))
 
 ;; Appearance
 (use-package doom-themes
