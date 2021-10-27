@@ -1,12 +1,7 @@
 ;; Defaults
 (setq gc-cons-threshold 100000000)
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
-(setq inhibit-startup-screen t
-      inhibit-startup-message t
-      inhibit-startup-echo-area-message t
-      initial-scratch-message nil
-      visible-bell t
-      ring-bell-function 'ignore)
+(setq ring-bell-function 'ignore)
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
@@ -40,6 +35,11 @@
   (setq esup-depth 0))
 
 ;; Packages
+(use-package dashboard
+  :straight t
+  :config
+  (dashboard-setup-startup-hook))
+
 (use-package which-key
   :straight t
   :config
