@@ -140,11 +140,16 @@
 (setq default-frame-alist '((font . "Fira Code-14")))
 
 ;; Languages
+(use-package company-auctex
+  :straight t
+  :defer t)
+
 (use-package tex-site
   :straight auctex
   :defer t
-  :mode (("\\.tex\\'" . latex-mode)
-	 ("\\.bib\\'" . latex-mode)))
+  :mode (("\\.tex\\'" . LaTeX-mode)
+	 ("\\.bib\\'" . LaTeX-mode))
+  :hook (LaTeX-mode . company-auctex-init))
 
 (use-package markdown-mode
   :straight t
