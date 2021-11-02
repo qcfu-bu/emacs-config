@@ -51,7 +51,8 @@
   (ivy-prescient-mode)
   (prescient-persist-mode)
   (global-set-key "\C-s" 'swiper)
-  (global-set-key (kbd "C-x C-r") 'counsel-recentf))
+  (global-set-key (kbd "C-x C-r") 'counsel-recentf)
+  (global-set-key (kbd "C-x b") 'counsel-switch-buffer))
 
 (use-package company-prescient
   :straight t
@@ -123,7 +124,7 @@
   :config
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
-  (load-theme 'doom-flatwhite t)
+  (load-theme 'doom-one-light t)
   (setq doom-themes-treemacs-theme "doom-atom")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
