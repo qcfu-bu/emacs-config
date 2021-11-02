@@ -123,7 +123,7 @@
   :config
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
-  (load-theme 'doom-one t)
+  (load-theme 'doom-flatwhite t)
   (setq doom-themes-treemacs-theme "doom-atom")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
@@ -137,19 +137,16 @@
   :defer t
   :hook (dired-mode . all-the-icons-dired-mode))
 
-(setq default-frame-alist '((font . "Fira Code-14")))
+(set-face-attribute 'default nil :font "Fira Code-14")
+(set-face-attribute 'fixed-pitch nil :family "Fira Code")
+(set-face-attribute 'variable-pitch nil :font "Arial-16")
 
 ;; Languages
-(use-package company-auctex
-  :straight t
-  :defer t)
-
 (use-package tex-site
   :straight auctex
   :defer t
   :mode (("\\.tex\\'" . LaTeX-mode)
-	 ("\\.bib\\'" . LaTeX-mode))
-  :hook (LaTeX-mode . company-auctex-init))
+	 ("\\.bib\\'" . LaTeX-mode)))
 
 (use-package markdown-mode
   :straight t
@@ -161,7 +158,10 @@
   :defer t
   :mode (("\\.org\\'" . org-mode))
   :hook ((org-mode . org-indent-mode)
-	 (org-mode . variable-pitch-mode)))
+	 (org-mode . variable-pitch-mode))
+  :config
+  (setq org-format-latex-options
+	(plist-put org-format-latex-options :scale 1.5)))
 
 (use-package org-superstar
   :straight t
