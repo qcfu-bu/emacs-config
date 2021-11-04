@@ -1,14 +1,5 @@
-;; Defaults
 (setq gc-cons-threshold 100000000)
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
-(setq ring-bell-function 'ignore)
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
-(save-place-mode 1)
-(global-auto-revert-mode t)
-(when (memq window-system '(mac ns x))
-  (mac-auto-operator-composition-mode t))
 
 ;; Straight
 (setq straight-check-for-modifications '(check-on-save)
@@ -27,12 +18,16 @@
   (load bootstrap-file nil 'nomessage))
 (straight-use-package 'use-package)
 
+;; Defaults
+(save-place-mode 1)
+(global-auto-revert-mode t)
+
 ;; Diagnostics
 (use-package esup
   :straight t
   :commands (esup)
   :init
-  (setq esup-depth 0))
+  (setq esup-depth 1))
 
 ;; Packages
 (use-package dashboard
@@ -124,7 +119,7 @@
   :config
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
-  (load-theme 'doom-one-light t)
+  (load-theme 'doom-one t)
   (setq doom-themes-treemacs-theme "doom-atom")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
@@ -138,9 +133,9 @@
   :defer t
   :hook (dired-mode . all-the-icons-dired-mode))
 
-(set-face-attribute 'default nil :font "Fira Code-14")
-(set-face-attribute 'fixed-pitch nil :family "Fira Code")
-(set-face-attribute 'variable-pitch nil :font "Arial-16")
+(set-face-attribute 'default nil :font "Hack-14")
+(set-face-attribute 'fixed-pitch nil :family "Hack")
+(set-face-attribute 'variable-pitch nil :family "DejaVu Serif")
 
 ;; Languages
 (use-package tex-site
