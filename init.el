@@ -22,13 +22,6 @@
 (save-place-mode 1)
 (global-auto-revert-mode t)
 
-;; Diagnostics
-(use-package esup
-  :straight t
-  :commands (esup)
-  :init
-  (setq esup-depth 1))
-
 ;; Packages
 (use-package dashboard
   :straight t
